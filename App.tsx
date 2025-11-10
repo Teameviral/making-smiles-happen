@@ -5,7 +5,6 @@ import HowItWorks from './components/HowItWorks';
 import Impact from './components/Impact';
 import About from './components/About';
 import Footer from './components/Footer';
-import DonateModal from './components/DonateModal';
 import OurStory from './pages/OurStory';
 import Team from './components/Team';
 import Blog from './pages/Blog';
@@ -13,7 +12,6 @@ import PartnerModal from './components/PartnerModal';
 import Manifesto from './pages/Manifesto';
 
 function App() {
-    const [isDonateModalOpen, setIsDonateModalOpen] = useState(false);
     const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
     const [page, setPage] = useState('home');
 
@@ -34,7 +32,7 @@ function App() {
             default:
                 return (
                     <>
-                        <Hero onDonateClick={() => setIsDonateModalOpen(true)} onPartnerClick={() => setIsPartnerModalOpen(true)} />
+                        <Hero onPartnerClick={() => setIsPartnerModalOpen(true)} />
                         <HowItWorks />
                         <Impact />
                         <About />
@@ -46,12 +44,11 @@ function App() {
 
     return (
         <div className="bg-white text-gray-800 antialiased">
-            <Header onDonateClick={() => setIsDonateModalOpen(true)} onNavigate={handleNavigate} />
+            <Header onNavigate={handleNavigate} />
             <main>
                 {renderPage()}
             </main>
             <Footer onNavigate={handleNavigate} onPartnerClick={() => setIsPartnerModalOpen(true)} />
-            {isDonateModalOpen && <DonateModal onClose={() => setIsDonateModalOpen(false)} />}
             {isPartnerModalOpen && <PartnerModal onClose={() => setIsPartnerModalOpen(false)} />}
         </div>
     );

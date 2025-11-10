@@ -31,8 +31,8 @@ const blogPosts = [
 
 const FeaturedPost = ({ post }) => (
      <div className="group grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-        <div className="overflow-hidden rounded-xl">
-            <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
+        <div className="w-full h-full bg-gray-200 rounded-xl flex items-center justify-center min-h-[300px]">
+            <p className="text-gray-500 italic">Image would appear here</p>
         </div>
         <div>
             <p className="text-sm text-teal-600 font-semibold">{post.date}</p>
@@ -50,8 +50,8 @@ const FeaturedPost = ({ post }) => (
 
 const PostCard = ({ post }) => (
     <div className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-        <div className="h-48 overflow-hidden">
-            <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
+        <div className="h-48 bg-gray-200 flex items-center justify-center">
+             <p className="text-gray-500 italic">Image would appear here</p>
         </div>
         <div className="p-6">
              <p className="text-xs text-teal-600 font-semibold">{post.date}</p>

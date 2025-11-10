@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { MenuIcon, CloseIcon } from './icons';
 
 interface HeaderProps {
-    onDonateClick: () => void;
     onNavigate: (page: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onDonateClick, onNavigate }) => {
+const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleNavClick = (page: string) => {
@@ -14,11 +13,6 @@ const Header: React.FC<HeaderProps> = ({ onDonateClick, onNavigate }) => {
         setIsMenuOpen(false);
     };
     
-    const handleDonateClick = () => {
-        onDonateClick();
-        setIsMenuOpen(false);
-    }
-
     return (
         <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -41,9 +35,9 @@ const Header: React.FC<HeaderProps> = ({ onDonateClick, onNavigate }) => {
                     <a href="https://calendly.com/chitwoodkathrynd/30min" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-sm font-medium text-teal-600 border border-teal-600 rounded-full hover:bg-teal-50 transition-colors">
                         Schedule a Call
                     </a>
-                    <button onClick={onDonateClick} className="px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-full hover:bg-teal-700 transition-colors shadow-md">
+                    <a href="https://buy.stripe.com/8x2dRbgif0FC9TO8Go7AI03" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-full hover:bg-teal-700 transition-colors shadow-md">
                         Donate Now
-                    </button>
+                    </a>
                 </nav>
                  <div className="md:hidden">
                     <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu" className="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500">
@@ -63,12 +57,12 @@ const Header: React.FC<HeaderProps> = ({ onDonateClick, onNavigate }) => {
                          <button onClick={() => handleNavClick('blog')} className="text-gray-700 hover:text-teal-600 transition-colors py-2 text-left font-medium">
                             Blog
                         </button>
-                        <a href="https://calendly.com/chitwoodkathrynd/30min" target="_blank" rel="noopener noreferrer" className="w-full text-center px-4 py-2 font-medium text-teal-600 border border-teal-600 rounded-full hover:bg-teal-50 transition-colors">
+                        <a href="https://calendly.com/chitwoodkathrynd/30min" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)} className="w-full text-center px-4 py-2 font-medium text-teal-600 border border-teal-600 rounded-full hover:bg-teal-50 transition-colors">
                             Schedule a Call
                         </a>
-                        <button onClick={handleDonateClick} className="w-full px-4 py-2 font-medium text-white bg-teal-600 rounded-full hover:bg-teal-700 transition-colors shadow-md">
+                        <a href="https://buy.stripe.com/8x2dRbgif0FC9TO8Go7AI03" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)} className="w-full text-center px-4 py-2 font-medium text-white bg-teal-600 rounded-full hover:bg-teal-700 transition-colors shadow-md">
                             Donate Now
-                        </button>
+                        </a>
                     </div>
                 </nav>
             )}
